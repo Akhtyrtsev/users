@@ -1,0 +1,21 @@
+<div>
+    <h2>Users</h2>
+        {% for user in users %}
+            <div>
+                <li>{{ user.username }}</li><br>
+            </div>
+        {% endfor %}
+</div>
+
+<form action="/login"><input type="submit" value="Login"></form>
+<form action="/register"><input type="submit" value = "Register"></form>
+
+<div>
+{% if request.user.id %}
+<form action="/{{request.user.id}}"><input type="submit" value = "Personal page"></form>
+<form action="/logout"><input type="submit" value = "Exit"></form>
+{% endif %}
+</div>
+
+
+ 

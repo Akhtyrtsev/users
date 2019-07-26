@@ -1,0 +1,31 @@
+{% block content %}
+  <div class="user-detail">
+    <div class="col-sm-8">
+      <h1>{{ user.username }}</h1>
+      <p>Your first name:{{ user.first_name}}</p>
+      <p>Your last name: {{ user.last_name}}</p>
+      <p>Your email: {{ user.email}}</p>
+    </div>
+    {% if user.profile.image %}
+	Your photo
+    <div>
+        <img src={{user.profile.image.url}} width="189" height="255">
+    </div>
+    {%else%}
+	You have no photo
+    {%endif%}
+{% if user.id != 1 %}
+  </div>
+    <h1>Edit your account</h1>
+    <p>You can edit your account using the following form:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save changes"></p>
+    </form>
+{%endif%}
+{% endblock %}
+<div>
+<form action="/ "><input type="submit" value = "Home page"></form>
+<form action="/logout"><input type="submit" value = "Exit"></form>
+</div>
