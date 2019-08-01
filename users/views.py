@@ -44,7 +44,7 @@ class MyRegisterFormView(FormView):
     def form_valid(self, form):
         new_user = form.save()
         send_mail('Регистрация', 'Поздравляем, вы успешно зарегестрировались на сайте.', \
-                  settings.EMAIL_HOST_USER, ['akhtyrtsev@gmail.com'])
+                  settings.EMAIL_HOST_USER, [new_user.email])
         profile = Profile.objects.create(user=new_user)
         return super(MyRegisterFormView, self).form_valid(form)
 
